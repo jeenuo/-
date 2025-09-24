@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>블로그·인스타그램 체험단 마케팅 - 내손안에 슈퍼바이저</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .page-header {
+            background: linear-gradient(135deg, #8b5cf6 0%, #a855f7 100%);
+            padding: 100px 0 80px;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .page-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 30% 20%, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
+            pointer-events: none;
+        }
+        
+        .page-title {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .page-subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .intro-section {
+            padding: 80px 0;
+            background: #ffffff;
+        }
+        
+        .intro-content {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            text-align: center;
+        }
+        
+        .intro-content h2 {
+            color: #1e293b;
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            font-weight: 700;
+        }
+        
+        .intro-content p {
+            color: #64748b;
+            font-size: 1.2rem;
+            line-height: 1.8;
+            margin-bottom: 2rem;
+        }
+        
+        .stats-section {
+            padding: 80px 0;
+            background: #f8fafc;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .stat-card {
+            background: linear-gradient(135deg, #8b5cf6 0%, #a855f7 100%);
+            color: white;
+            padding: 3rem 2rem;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(139, 92, 246, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        
+        .stat-icon {
+            width: 60px;
+            height: 60px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .stat-icon i {
+            font-size: 1.5rem;
+        }
+        
+        .stat-number {
+            font-size: 3rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .stat-label {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .process-section {
+            padding: 80px 0;
+            background: #ffffff;
+        }
+        
+        .process-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .process-title {
+            text-align: center;
+            color: #1e293b;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            font-weight: 700;
+        }
+        
+        .process-flow {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 2rem;
+            position: relative;
+        }
+        
+        .process-step {
+            background: #ecfdf5;
+            border: 2px solid #10b981;
+            border-radius: 15px;
+            padding: 2rem 1.5rem;
+            text-align: center;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        
+        .process-step:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(16, 185, 129, 0.2);
+        }
+        
+        .step-number {
+            width: 50px;
+            height: 50px;
+            background: #8b5cf6;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+        
+        .step-title {
+            color: #1e293b;
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+        
+        .step-description {
+            color: #64748b;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+        
+        .arrow {
+            position: absolute;
+            top: 50%;
+            right: -1rem;
+            transform: translateY(-50%);
+            color: #10b981;
+            font-size: 1.5rem;
+            z-index: 10;
+        }
+        
+        .packages-section {
+            padding: 80px 0;
+            background: #f8fafc;
+        }
+        
+        .packages-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .packages-title {
+            text-align: center;
+            color: #1e293b;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            font-weight: 700;
+        }
+        
+        .packages-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+        
+        .package-card {
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 2.5rem 2rem;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            border: 2px solid #e2e8f0;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        
+        .package-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+        
+        .package-badge {
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #8b5cf6;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        
+        .package-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #8b5cf6 0%, #a855f7 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+        }
+        
+        .package-icon i {
+            font-size: 1.5rem;
+            color: white;
+        }
+        
+        .package-title {
+            color: #1e293b;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        
+        .package-description {
+            color: #64748b;
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+        
+        .cta-section {
+            background: #8b5cf6;
+            padding: 80px 0;
+            text-align: center;
+            color: white;
+        }
+        
+        .cta-content h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+        
+        .cta-content p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .btn-primary {
+            background: #ffffff;
+            color: #8b5cf6;
+            padding: 1rem 2rem;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(255, 255, 255, 0.3);
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 255, 255, 0.4);
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            color: #ffffff;
+            border: 2px solid #ffffff;
+            padding: 1rem 2rem;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-secondary:hover {
+            background: #ffffff;
+            color: #8b5cf6;
+        }
+        
+        @media (max-width: 768px) {
+            .stats-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            
+            .process-flow {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            
+            .arrow {
+                display: none;
+            }
+            
+            .packages-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            
+            .page-title {
+                font-size: 2rem;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-content">
+                <div class="nav-logo">
+                    <h2>내손안에 슈퍼바이저</h2>
+                    <span>마케팅 전문 솔루션</span>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="index.html">홈</a></li>
+                    <li><a href="index.html#services">서비스</a></li>
+                    <li><a href="index.html#results">성과사례</a></li>
+                    <li><a href="index.html#about">회사소개</a></li>
+                    <li><a href="https://pf.kakao.com/_xoxaxawn" target="_blank" class="kakao-banner">
+                        <i class="fab fa-kakao"></i>
+                        <span>카카오톡 바로가기</span>
+                    </a></li>
+                </ul>
+                <div class="nav-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1 class="page-title">체험단 마케팅</h1>
+            <p class="page-subtitle">실제 고객이 직접 체험하고 남기는 진짜 리뷰의 힘으로 브랜드 신뢰도를 높입니다</p>
+        </div>
+    </section>
+
+    <!-- Introduction Section -->
+    <section class="intro-section">
+        <div class="intro-content">
+            <h2>진정성 있는 고객 리뷰의 힘</h2>
+            <p>체험단 마케팅은 제품이나 서비스를 실제로 사용한 고객들이 자발적으로 작성하는 리뷰를 통해 브랜드 신뢰도를 높이는 가장 효과적인 마케팅 방법입니다.</p>
+            <p>블로그와 인스타그램을 중심으로 한 체계적인 체험단 운영으로 고객의 진정성 있는 경험을 바탕으로 한 강력한 마케팅 효과를 경험해보세요.</p>
+        </div>
+    </section>
+
+    <!-- Statistics Section -->
+    <section class="stats-section">
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-icon">
+                    <i class="fas fa-heart"></i>
+                </div>
+                <div class="stat-number">92%</div>
+                <div class="stat-label">리뷰 신뢰도</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">
+                    <i class="fas fa-chart-line"></i>
+                </div>
+                <div class="stat-number">3.5배</div>
+                <div class="stat-label">구매 전환율</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">
+                    <i class="fas fa-star"></i>
+                </div>
+                <div class="stat-number">85%</div>
+                <div class="stat-label">재구매 의향</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section class="process-section">
+        <div class="process-content">
+            <h2 class="process-title">체험단 마케팅 프로세스</h2>
+            <div class="process-flow">
+                <div class="process-step">
+                    <div class="step-number">01</div>
+                    <div class="step-title">타겟 분석</div>
+                    <div class="step-description">브랜드와 제품에 적합한 체험단 타겟 설정</div>
+                </div>
+                <div class="arrow">→</div>
+                <div class="process-step">
+                    <div class="step-number">02</div>
+                    <div class="step-title">체험단 모집</div>
+                    <div class="step-description">다양한 채널을 통한 체험단 모집 및 선정</div>
+                </div>
+                <div class="arrow">→</div>
+                <div class="process-step">
+                    <div class="step-number">03</div>
+                    <div class="step-title">제품 제공</div>
+                    <div class="step-description">체험단에게 제품 또는 서비스 제공</div>
+                </div>
+                <div class="arrow">→</div>
+                <div class="process-step">
+                    <div class="step-number">04</div>
+                    <div class="step-title">콘텐츠 제작</div>
+                    <div class="step-description">고품질 리뷰 작성 및 콘텐츠 품질 관리</div>
+                </div>
+                <div class="arrow">→</div>
+                <div class="process-step">
+                    <div class="step-number">05</div>
+                    <div class="step-title">성과 분석</div>
+                    <div class="step-description">캠페인 성과 분석 및 리포트 제공</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Packages Section -->
+    <section class="packages-section">
+        <div class="packages-content">
+            <h2 class="packages-title">체험단 마케팅 서비스 패키지</h2>
+            <div class="packages-grid">
+                <div class="package-card">
+                    <div class="package-icon">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <div class="package-title">BASIC 패키지</div>
+                    <div class="package-description">체험단 50명 모집, 기본 리뷰 가이드 제공, 월 1회 리포트</div>
+                </div>
+                <div class="package-card">
+                    <div class="package-badge">BEST</div>
+                    <div class="package-icon">
+                        <i class="fas fa-crown"></i>
+                    </div>
+                    <div class="package-title">PREMIUM 패키지</div>
+                    <div class="package-description">체험단 100명 + 인플루언서 5명, 맞춤형 콘텐츠 가이드, 실시간 모니터링, 주간/월간 리포트</div>
+                </div>
+                <div class="package-card">
+                    <div class="package-icon">
+                        <i class="fas fa-building"></i>
+                    </div>
+                    <div class="package-title">ENTERPRISE</div>
+                    <div class="package-description">맞춤형 체험단 구성, 전담 매니저 배정, 멀티 채널 전략, AI 기반 성과 분석</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2>체험단 마케팅 시작하기</h2>
+                <p>진정성 있는 고객 리뷰로 브랜드 신뢰도를 높이는 체험단 마케팅을 지금 시작해보세요</p>
+                <div class="cta-buttons">
+                    <a href="https://form.naver.com/response/YNvbZ7GmFHjHlu5fVvFxpg" target="_blank" class="btn-primary">무료 상담 신청</a>
+                    <a href="tel:010-8798-0880" class="btn-secondary">전화 상담</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <h3>내손안에 슈퍼바이저</h3>
+                        <p>대표님들을 위한 맞춤 솔루션 광고 기획</p>
+                    </div>
+                    <p class="footer-description">
+                        소상공인을 위한 맞춤형 전문 퍼포먼스 마케팅 솔루션을 제공하는 
+                        데이터 기반 마케팅 전문기업입니다.
+                    </p>
+                </div>
+                <div class="footer-section">
+                    <h4>서비스</h4>
+                    <ul>
+                        <li><a href="index.html#services">검색광고 최적화</a></li>
+                        <li><a href="index.html#services">타겟팅 광고</a></li>
+                        <li><a href="index.html#services">성과 분석</a></li>
+                        <li><a href="index.html#services">모바일 마케팅</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>회사 정보</h4>
+                    <ul>
+                        <li><a href="index.html#about">회사소개</a></li>
+                        <li><a href="index.html#results">성과 사례</a></li>
+                        <li><a href="index.html#contact">문의하기</a></li>
+                        <li><a href="index.html#contact">채용정보</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>연락처</h4>
+                    <div class="footer-contact">
+                        <p><i class="fas fa-phone"></i> 010-8798-0880</p>
+                        <p><i class="fas fa-envelope"></i> nbbranding@naver.com</p>
+                        <p><i class="fas fa-map-marker-alt"></i> 서울 강남구 영동대로 602</p>
+                    </div>
+                    <div class="social-links">
+                        <a href="https://blog.naver.com/nb-branding" target="_blank"><i class="fas fa-blog"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 대표자 김준호 | 사업자등록번호 298-06-03540 ㅣ 서울 강남구 영동대로 602</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,794 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>샤오홍슈 마케팅 - 내손안에 슈퍼바이저</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .page-header {
+            background: #ffffff;
+            padding: 100px 0 80px;
+            text-align: center;
+            color: #333333;
+            position: relative;
+        }
+        
+        .page-title {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: #333333;
+        }
+        
+        .page-subtitle {
+            font-size: 1.2rem;
+            color: #666666;
+            line-height: 1.6;
+        }
+        
+        .overview-section {
+            padding: 80px 0;
+            background: #ffffff;
+        }
+        
+        .overview-card {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .xiaohongshu-card {
+            background: #ffffff;
+            border: 2px solid #f0f0f0;
+            border-radius: 15px;
+            padding: 3rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        
+        .xiaohongshu-logo {
+            font-size: 4rem;
+            font-weight: bold;
+            color: #dc2626;
+            margin-bottom: 0.5rem;
+        }
+        
+        .xiaohongshu-name {
+            font-size: 1.2rem;
+            color: #666666;
+            margin-bottom: 2rem;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .stat-item {
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #333333;
+            margin-bottom: 0.5rem;
+        }
+        
+        .stat-label {
+            font-size: 0.9rem;
+            color: #666666;
+        }
+        
+        .download-btn {
+            background: #dc2626;
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+        }
+        
+        .download-btn:hover {
+            background: #b91c1c;
+            transform: translateY(-2px);
+        }
+        
+        .why-section {
+            padding: 80px 0;
+            background: #f8fafc;
+        }
+        
+        .section-title {
+            text-align: center;
+            color: #333333;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            font-weight: 700;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .feature-card {
+            background: #ffffff;
+            border: 2px solid #f0f0f0;
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        
+        .feature-card:hover {
+            border-color: #dc2626;
+            transform: translateY(-5px);
+        }
+        
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            background: #dc2626;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+        }
+        
+        .feature-icon i {
+            font-size: 1.5rem;
+            color: white;
+        }
+        
+        .feature-title {
+            color: #333333;
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        
+        .feature-description {
+            color: #666666;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+        
+        .keywords-section {
+            padding: 80px 0;
+            background: #ffffff;
+        }
+        
+        .keywords-content {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .keyword-categories {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+        
+        .keyword-category {
+            background: #ffffff;
+            border: 2px solid #f0f0f0;
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+        }
+        
+        .category-icon {
+            width: 50px;
+            height: 50px;
+            background: #dc2626;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+        }
+        
+        .category-icon i {
+            font-size: 1.2rem;
+            color: white;
+        }
+        
+        .category-title {
+            color: #333333;
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+        
+        .keyword-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            justify-content: center;
+        }
+        
+        .keyword-tag {
+            background: #dc2626;
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+        
+        .services-section {
+            padding: 80px 0;
+            background: #f8fafc;
+        }
+        
+        .services-content {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+        }
+        
+        .service-card {
+            background: #ffffff;
+            border: 2px solid #f0f0f0;
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        
+        .service-card:hover {
+            border-color: #dc2626;
+            transform: translateY(-5px);
+        }
+        
+        .service-icon {
+            width: 60px;
+            height: 60px;
+            background: #dc2626;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+        }
+        
+        .service-icon i {
+            font-size: 1.5rem;
+            color: white;
+        }
+        
+        .service-title {
+            color: #333333;
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        
+        .service-description {
+            color: #666666;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+        
+        .pricing-section {
+            padding: 80px 0;
+            background: #ffffff;
+        }
+        
+        .pricing-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .pricing-table {
+            background: #ffffff;
+            border: 2px solid #f0f0f0;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .table-header {
+            background: #f8fafc;
+            padding: 1.5rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 1rem;
+            font-weight: 600;
+            color: #333333;
+            border-bottom: 2px solid #f0f0f0;
+        }
+        
+        .table-row {
+            padding: 1.5rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 1rem;
+            border-bottom: 1px solid #f0f0f0;
+            align-items: center;
+        }
+        
+        .table-row:last-child {
+            border-bottom: none;
+        }
+        
+        .table-cell {
+            text-align: center;
+            color: #333333;
+        }
+        
+        .price {
+            font-weight: bold;
+            color: #dc2626;
+        }
+        
+        .platforms-section {
+            padding: 80px 0;
+            background: #f8fafc;
+        }
+        
+        .platforms-content {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .platforms-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+        }
+        
+        .platform-card {
+            background: #ffffff;
+            border: 2px solid #f0f0f0;
+            border-radius: 15px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+        }
+        
+        .platform-card:hover {
+            border-color: #dc2626;
+            transform: translateY(-5px);
+        }
+        
+        .platform-title {
+            color: #333333;
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+        
+        .platform-subtitle {
+            color: #dc2626;
+            font-size: 1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .platform-description {
+            color: #666666;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+        
+        .cta-section {
+            background: #dc2626;
+            padding: 80px 0;
+            text-align: center;
+            color: white;
+        }
+        
+        .cta-content h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+        
+        .cta-content p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .btn-primary {
+            background: #ffffff;
+            color: #dc2626;
+            padding: 1rem 2rem;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(255, 255, 255, 0.3);
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 255, 255, 0.4);
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            color: #ffffff;
+            border: 2px solid #ffffff;
+            padding: 1rem 2rem;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-secondary:hover {
+            background: #ffffff;
+            color: #dc2626;
+        }
+        
+        @media (max-width: 768px) {
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1rem;
+            }
+            
+            .features-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            
+            .keyword-categories {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            
+            .services-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            
+            .platforms-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            
+            .page-title {
+                font-size: 2rem;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-content">
+                <div class="nav-logo">
+                    <h2>내손안에 슈퍼바이저</h2>
+                    <span>마케팅 전문 솔루션</span>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="index.html">홈</a></li>
+                    <li><a href="index.html#services">서비스</a></li>
+                    <li><a href="index.html#results">성과사례</a></li>
+                    <li><a href="index.html#about">회사소개</a></li>
+                    <li><a href="https://pf.kakao.com/_xoxaxawn" target="_blank" class="kakao-banner">
+                        <i class="fab fa-kakao"></i>
+                        <span>카카오톡 바로가기</span>
+                    </a></li>
+                </ul>
+                <div class="nav-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1 class="page-title">샤오홍슈 마케팅</h1>
+            <p class="page-subtitle">중국 3억 명이 사용하는 라이프스타일 플랫폼<br>중국판 인스타그램이자 소셜 전자상거래 플랫폼으로 한국 브랜드의 중국 진출 파트너</p>
+        </div>
+    </section>
+
+    <!-- Overview Section -->
+    <section class="overview-section">
+        <div class="overview-card">
+            <div class="xiaohongshu-card">
+                <div class="xiaohongshu-logo">小红书</div>
+                <div class="xiaohongshu-name">샤오홍슈</div>
+                
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <div class="stat-number">3억+</div>
+                        <div class="stat-label">월간 활성 사용자</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">255만</div>
+                        <div class="stat-label">한국 관련 게시물</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">13.5억</div>
+                        <div class="stat-label">한국 관련 조회수</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">460만</div>
+                        <div class="stat-label">2024년 예상 방문객</div>
+                    </div>
+                </div>
+                
+                <a href="#" class="download-btn">
+                    <i class="fas fa-download"></i>
+                    샤오홍슈 마케팅 제안서 다운로드
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Xiaohongshu Section -->
+    <section class="why-section">
+        <div class="why-content">
+            <h2 class="section-title">왜 샤오홍슈 마케팅인가?</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <div class="feature-title">급등하는 강한 중국 팬덤</div>
+                    <div class="feature-description">2023년 200만 명 → 2024년 460만 명</div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div class="feature-title">Z세대 대도시 거주자 중심</div>
+                    <div class="feature-description">구매력 높은 대중 집중</div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <div class="feature-title">높은 검색 구매 전환율</div>
+                    <div class="feature-description">SNS 정보 검색에서 실제 구매로 이어지는 비율 우수</div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-crown"></i>
+                    </div>
+                    <div class="feature-title">왕홍(크리에이터) 영향력</div>
+                    <div class="feature-description">이용자들의 높은 충성도와 신뢰도</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Keywords Section -->
+    <section class="keywords-section">
+        <div class="keywords-content">
+            <h2 class="section-title">한국 관련 인기 키워드</h2>
+            <div class="keyword-categories">
+                <div class="keyword-category">
+                    <div class="category-icon">
+                        <i class="fas fa-utensils"></i>
+                    </div>
+                    <div class="category-title">음식 관련</div>
+                    <div class="keyword-tags">
+                        <span class="keyword-tag">한국맛집 (맛집정보)</span>
+                        <span class="keyword-tag">서울맛집 (맛집정보)</span>
+                        <span class="keyword-tag">한국카페 (카페정보)</span>
+                        <span class="keyword-tag">서울카페 (카페정보)</span>
+                    </div>
+                </div>
+                <div class="keyword-category">
+                    <div class="category-icon">
+                        <i class="fas fa-lipstick"></i>
+                    </div>
+                    <div class="category-title">패션 뷰티</div>
+                    <div class="keyword-tags">
+                        <span class="keyword-tag">한국화장품</span>
+                        <span class="keyword-tag">한국패션</span>
+                        <span class="keyword-tag">한국세정</span>
+                    </div>
+                </div>
+                <div class="keyword-category">
+                    <div class="category-icon">
+                        <i class="fas fa-home"></i>
+                    </div>
+                    <div class="category-title">라이프스타일</div>
+                    <div class="keyword-tags">
+                        <span class="keyword-tag">한국여행</span>
+                        <span class="keyword-tag">한국쇼핑</span>
+                        <span class="keyword-tag">한국생활</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services-section">
+        <div class="services-content">
+            <h2 class="section-title">샤오홍슈 마케팅 서비스</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-pen"></i>
+                    </div>
+                    <div class="service-title">콘텐츠 제작</div>
+                    <div class="service-description">중국 현지 문화에 맞는 바이럴 콘텐츠 기획 및 제작</div>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-file-alt"></i>
+                    </div>
+                    <div class="service-title">공식 계정 운영</div>
+                    <div class="service-description">브랜드 공식 계정 개설 및 운영, 팔로워 증대 관리</div>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-chart-bar"></i>
+                    </div>
+                    <div class="service-title">성과 분석</div>
+                    <div class="service-description">분석 보고서 제공 및 성과 개선을 위한 인사이트 제공</div>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div class="service-title">KOL/KOC 마케팅</div>
+                    <div class="service-description">영향력 있는 왕홍(KOL) 및 일반 사용자(KOC)를 활용한 마케팅 대행</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="pricing-section">
+        <div class="pricing-content">
+            <h2 class="section-title">중국 SNS 체험단 단가</h2>
+            <div class="pricing-table">
+                <div class="table-header">
+                    <div>최소 집행 인원</div>
+                    <div>인당 단가</div>
+                    <div>총금액 (VAT 별도)</div>
+                </div>
+                <div class="table-row">
+                    <div class="table-cell">10명 이상</div>
+                    <div class="table-cell price">12만 원</div>
+                    <div class="table-cell price">120만원</div>
+                </div>
+                <div class="table-row">
+                    <div class="table-cell">20명 이상</div>
+                    <div class="table-cell price">9만 원</div>
+                    <div class="table-cell price">180만원</div>
+                </div>
+                <div class="table-row">
+                    <div class="table-cell">30명 이상</div>
+                    <div class="table-cell price">8만 원</div>
+                    <div class="table-cell price">240만원</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Platforms Section -->
+    <section class="platforms-section">
+        <div class="platforms-content">
+            <h2 class="section-title">주요 플랫폼 소개</h2>
+            <div class="platforms-grid">
+                <div class="platform-card">
+                    <div class="platform-title">Xiaohongshu (小红书)</div>
+                    <div class="platform-subtitle">중국 1위 SNS, 월간 사용자 3억 명</div>
+                    <div class="platform-description">중국판 인스타그램이자 소셜 전자상거래 플랫폼</div>
+                </div>
+                <div class="platform-card">
+                    <div class="platform-title">Douyin Marketing (抖音)</div>
+                    <div class="platform-subtitle">중국 1위 숏폼 영상 앱, 월간 사용자 4.7억 명</div>
+                    <div class="platform-description">중국판 틱톡 플레이스</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2>샤오홍슈 마케팅 시작하기</h2>
+                <p>중국 시장 진출을 위한 전문적인 샤오홍슈 마케팅 서비스를 지금 시작해보세요</p>
+                <div class="cta-buttons">
+                    <a href="https://form.naver.com/response/YNvbZ7GmFHjHlu5fVvFxpg" target="_blank" class="btn-primary">무료 상담 신청</a>
+                    <a href="tel:010-8798-0880" class="btn-secondary">전화 상담</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <h3>내손안에 슈퍼바이저</h3>
+                        <p>대표님들을 위한 맞춤 솔루션 광고 기획</p>
+                    </div>
+                    <p class="footer-description">
+                        소상공인을 위한 맞춤형 전문 퍼포먼스 마케팅 솔루션을 제공하는 
+                        데이터 기반 마케팅 전문기업입니다.
+                    </p>
+                </div>
+                <div class="footer-section">
+                    <h4>서비스</h4>
+                    <ul>
+                        <li><a href="index.html#services">검색광고 최적화</a></li>
+                        <li><a href="index.html#services">타겟팅 광고</a></li>
+                        <li><a href="index.html#services">성과 분석</a></li>
+                        <li><a href="index.html#services">모바일 마케팅</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>회사 정보</h4>
+                    <ul>
+                        <li><a href="index.html#about">회사소개</a></li>
+                        <li><a href="index.html#results">성과 사례</a></li>
+                        <li><a href="index.html#contact">문의하기</a></li>
+                        <li><a href="index.html#contact">채용정보</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>연락처</h4>
+                    <div class="footer-contact">
+                        <p><i class="fas fa-phone"></i> 010-8798-0880</p>
+                        <p><i class="fas fa-envelope"></i> nbbranding@naver.com</p>
+                        <p><i class="fas fa-map-marker-alt"></i> 서울 강남구 영동대로 602</p>
+                    </div>
+                    <div class="social-links">
+                        <a href="https://blog.naver.com/nb-branding" target="_blank"><i class="fas fa-blog"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 대표자 김준호 | 사업자등록번호 298-06-03540 ㅣ 서울 강남구 영동대로 602</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

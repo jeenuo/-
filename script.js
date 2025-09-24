@@ -523,3 +523,100 @@ if ('serviceWorker' in navigator) {
     });
 }
 
+// Process Slider
+document.addEventListener('DOMContentLoaded', function() {
+    const sliderTrack = document.querySelector('.slider-track');
+    const prevBtn = document.querySelector('.prev-btn');
+    const nextBtn = document.querySelector('.next-btn');
+    const dots = document.querySelectorAll('.dot');
+    const cards = document.querySelectorAll('.process-card');
+    
+    let currentSlide = 0;
+    const cardsPerView = window.innerWidth <= 768 ? 1 : window.innerWidth <= 1024 ? 2 : 3;
+    const maxSlides = Math.ceil(cards.length / cardsPerView) - 1;
+    
+    function updateSlider() {
+        const translateX = -currentSlide * (100 / cardsPerView);
+        sliderTrack.style.transform = `translateX(${translateX}%)`;
+        
+        // Update dots
+        dots.forEach((dot, index) => {
+            dot.classList.toggle('active', index === currentSlide);
+        });
+        
+        // Update button states
+        prevBtn.disabled = currentSlide === 0;
+        nextBtn.disabled = currentSlide >= maxSlides;
+    }
+    
+    function nextSlide() {
+        if (currentSlide < maxSlides) {
+            currentSlide++;
+            updateSlider();
+        }
+    }
+    
+    function prevSlide() {
+        if (currentSlide > 0) {
+            currentSlide--;
+            updateSlider();
+        }
+    }
+    
+    // Event listeners
+    nextBtn.addEventListener('click', nextSlide);
+    prevBtn.addEventListener('click', prevSlide);
+    
+    dots.forEach((dot, index) => {
+        dot.addEventListener('click', () => {
+            currentSlide = index;
+            updateSlider();
+        });
+    });
+    
+    // Auto-slide functionality
+    let autoSlideInterval;
+    
+    function startAutoSlide() {
+        autoSlideInterval = setInterval(() => {
+            if (currentSlide < maxSlides) {
+                nextSlide();
+            } else {
+                currentSlide = 0;
+                updateSlider();
+            }
+        }, 4000);
+    }
+    
+    function stopAutoSlide() {
+        clearInterval(autoSlideInterval);
+    }
+    
+    // Start auto-slide
+    startAutoSlide();
+    
+    // Pause on hover
+    const sliderContainer = document.querySelector('.slider-container');
+    if (sliderContainer) {
+        sliderContainer.addEventListener('mouseenter', stopAutoSlide);
+        sliderContainer.addEventListener('mouseleave', startAutoSlide);
+    }
+    
+    // Handle resize
+    window.addEventListener('resize', () => {
+        const newCardsPerView = window.innerWidth <= 768 ? 1 : window.innerWidth <= 1024 ? 2 : 3;
+        const newMaxSlides = Math.ceil(cards.length / newCardsPerView) - 1;
+        
+        if (currentSlide > newMaxSlides) {
+            currentSlide = newMaxSlides;
+        }
+        
+        updateSlider();
+    });
+    
+    // Initialize
+    updateSlider();
+});
+
+// Results infinite scroll animation is handled by CSS
+
